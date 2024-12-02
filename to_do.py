@@ -24,8 +24,17 @@ def add_task(task_name):
     save_task(tasks)
 
 
-def view_task(): #(단순히) 할일목록보기
+def view_task(): #(단순히) 할일목록보기 ,merge 진행
     tasks = load_task() #파일이 잇는 경우 안에 내용물이 tasks에 들어가고 없으면 빈 리스트가 들어감
+    if not tasks: 
+        print ("현재 등록된 할일이 없습니다.")
+    else :
+        print ("---- 할일 목록 ----")
+        for i,task in enumerate(tasks,start=1): #enumerate() : 숫자와 같이 출력됨. (변수,시작하는숫자)i에 숫자 1식증가
+            # i =1, task = {"name": "파이썬공부하기","completed": false}
+                status = "완료" if task['completed'] else "미완료" #키값넣으면 자동적으로 반환(출력 또는 돌려주기) 값을 준다
+                                #if 뒤가 맞으면 앞에 , 아니면 else 뒤에
+                print(f"{i}. {task['name']} : {status}") # 1. 파이썬 공부하기 : 미완료
 
 def complete_task(task_number): # 완료한 할일
     pass
