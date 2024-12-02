@@ -6,7 +6,7 @@ TASK_FILE = 'tasks.json' #여따가 할일 저장할거셈ㅋ
 #파일열기
 def load_task(): #path=경로
     if os.path.exists('tasks.json'): #파일명 가진 파일이 있나?
-        with open(TASK_FILE,'r',encoding=utf-8) as file: #있으면 읽어.
+        with open(TASK_FILE,'r', encoding='utf-8') as file: #있으면 읽어.
             return json.load(file) #json.load() 함수이면서 메소드(---.---())= 클래스 안에 구현된 함수
     return [] #파일없다? 그럼머..아무것도없다 알겐니? =>빈리스트  
 
