@@ -36,12 +36,14 @@ def view_task(): #(단순히) 할일목록보기 ,merge 진행
                                 #if 뒤가 맞으면 앞에 , 아니면 else 뒤에
                 print(f"{i}. {task['name']} : {status}") # 1. 파이썬 공부하기 : 미완료
         print("-------------------")
+
 def complete_task(task_number): # 완료한 할일
     tasks = load_task() #tasks = [{"name":"파이썬 공부하기", "completed":false}, ]
     if 1 <= task_number <= len(tasks) : #3번 입력한 경우 번호 잘못입력했으니 다시입력해 !
         tasks[task_number-1]["completed"] = True # tasks [0]["completed"] =>{"name":"파이썬 공부하기", "completed":false} =>false
         save_task(tasks)
         print(f"할 일 : {tasks[task_number-1]['name']} 이(가) 완료 처리 되었습니다.")
+            
     else :
         print('유효하지 않은 번호입니다. 다시 입력해주세요.')
 
@@ -49,7 +51,7 @@ def delete_task(task_number): #삭제할 할일
     pass
 
 def show_menu() : # 메뉴
-    print("작업관리 애플리케이션")
+    print("---- 작업관리 애플리케이션 ----")
     print("1. 할 일 추가")
     print("2. 할 일 목록보기")
     print("3. 할 일 완료")
