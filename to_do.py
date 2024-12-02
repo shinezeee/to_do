@@ -23,14 +23,14 @@ def add_task(task_name):
     tasks.append(task) #데이터 리스트 집어넣기 ! []
     save_task(tasks)
 
-    
+
 def view_task(): #(단순히) 할일목록보기
-    pass
+    tasks = load_task() #파일이 잇는 경우 안에 내용물이 tasks에 들어가고 없으면 빈 리스트가 들어감
 
 def complete_task(task_number): # 완료한 할일
     pass
 
-def del_task(task_number): #삭제할 할일
+def delete_task(task_number): #삭제할 할일
     pass
 
 def show_menu() : # 메뉴
