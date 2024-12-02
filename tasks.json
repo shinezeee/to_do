@@ -6,5 +6,9 @@
     {
         "name": "데이터베이스 공부하기",
         "completed": true
+    },
+    {
+        "name": "알바하기",
+        "completed": false
     }
 ]
