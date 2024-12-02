@@ -35,7 +35,7 @@ def view_task(): #(단순히) 할일목록보기 ,merge 진행
                 status = "완료" if task['completed'] else "미완료" #키값넣으면 자동적으로 반환(출력 또는 돌려주기) 값을 준다
                                 #if 뒤가 맞으면 앞에 , 아니면 else 뒤에
                 print(f"{i}. {task['name']} : {status}") # 1. 파이썬 공부하기 : 미완료
-
+        print("-------------------")
 def complete_task(task_number): # 완료한 할일
     tasks = load_task() #tasks = [{"name":"파이썬 공부하기", "completed":false}, ]
     if 1 <= task_number <= len(tasks) : #3번 입력한 경우 번호 잘못입력했으니 다시입력해 !
