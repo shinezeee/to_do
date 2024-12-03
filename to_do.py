@@ -39,6 +39,12 @@ def view_task(): #(단순히) 할일목록보기 ,merge 진행
 
 def complete_task(task_number): # 완료한 할일
     tasks = load_task() #tasks = [{"name":"파이썬 공부하기", "completed":false}, ]
+    if not tasks :
+        print("저장된 할 일이 없습니다.")
+        return
+    
+    view_task()
+    
     if 1 <= task_number <= len(tasks) : #3번 입력한 경우 번호 잘못입력했으니 다시입력해 !
         tasks[task_number-1]["completed"] = True # tasks [0]["completed"] =>{"name":"파이썬 공부하기", "completed":false} =>false
         save_task(tasks)
@@ -49,6 +55,12 @@ def complete_task(task_number): # 완료한 할일
 
 def delete_task(task_number): #삭제할 할일 
     tasks = load_task() # 목록 불러오기
+    if not tasks :
+        print("저장된 할 일이 없습니다.")
+        return
+    
+    view_task()
+        
     if 1 <=task_number <= len(tasks) : # 목록중 고르기
         remove_task = tasks.pop(task_number-1) # pop통해 삭제 및 반환, 삭제된 데이터가 remove_task에 들어감
         save_task(tasks) #리스트에 저장
@@ -74,9 +86,11 @@ def main():
         elif choice =='2':
             view_task() #할일 목록보기
         elif choice =='3':
+            view_task()
             task_number =int(input("완료한 할 일을 선택해주세요 : "))
             complete_task(task_number)
         elif choice =='4':
+            view_task()
             task_number =int(input("삭제할 할 일을 선택해주세요 : "))
             delete_task(task_number)
         elif choice =='5':
