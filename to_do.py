@@ -6,7 +6,7 @@ TASK_FILE = 'tasks.json' #여따가 할일 저장할거셈ㅋ
 #파일열기
 def load_task(): #path=경로
     if os.path.exists('tasks.json'): #파일명 가진 파일이 있나?
-        with open(TASK_FILE,'r',encoding=utf-8) as file: #있으면 읽어.
+        with open(TASK_FILE,'r',encoding='utf-8') as file: #있으면 읽어.
             return json.load(file) #json.load() 함수이면서 메소드(---.---())= 클래스 안에 구현된 함수
     return [] #파일없다? 그럼머..아무것도없다 알겐니? =>빈리스트  
 
@@ -30,8 +30,14 @@ def view_task(): #(단순히) 할일목록보기
 def complete_task(task_number): # 완료한 할일
     pass
 
-def del_task(task_number): #삭제할 할일
-    pass
+def delete_task(task_number): #삭제할 할일 
+    tasks = load_task() # 목록 불러오기
+    if 1 <=task_number <= len(tasks) : # 목록중 고르기
+        remove_task = tasks.pop(task_number-1) # pop통해 삭제 및 반환, 삭제된 데이터가 remove_task에 들어감
+        save_task(tasks) #리스트에 저장
+        print (f"'{remove_task['name']}'이(가) 삭제되었습니다.")
+    else :
+        print ("유효하지 않은 번호입니다. 다시 시도해주새요.")
 
 def show_menu() : # 메뉴
     print("작업관리 애플리케이션")
@@ -55,7 +61,7 @@ def main():
             complete_task(task_number)
         elif choice =='4':
             task_number =int(input("삭제할 할 일을 선택해주세요 : "))
-            del_task(task_number)
+            delete_task(task_number)
         elif choice =='5':
             print ("시스템을 종료합니다. ")
             break
