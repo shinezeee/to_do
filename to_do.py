@@ -6,7 +6,7 @@ TASK_FILE = 'tasks.json' #여따가 할일 저장할거셈ㅋ
 #파일열기
 def load_task(): #path=경로
     if os.path.exists('tasks.json'): #파일명 가진 파일이 있나?
-        with open(TASK_FILE,'r', encoding='utf-8') as file: #있으면 읽어.
+        with open(TASK_FILE,'r',encoding='utf-8') as file: #있으면 읽어.
             return json.load(file) #json.load() 함수이면서 메소드(---.---())= 클래스 안에 구현된 함수
     return [] #파일없다? 그럼머..아무것도없다 알겐니? =>빈리스트  
 
@@ -42,13 +42,19 @@ def complete_task(task_number): # 완료한 할일
     if 1 <= task_number <= len(tasks) : #3번 입력한 경우 번호 잘못입력했으니 다시입력해 !
         tasks[task_number-1]["completed"] = True # tasks [0]["completed"] =>{"name":"파이썬 공부하기", "completed":false} =>false
         save_task(tasks)
-        print(f"할 일 : {tasks[task_number-1]['name']} 이(가) 완료 처리 되었습니다.")
+        print(f"할 일 중 '{tasks[task_number-1]['name']}' 이(가) 완료 처리 되었습니다.")
             
     else :
         print('유효하지 않은 번호입니다. 다시 입력해주세요.')
 
-def delete_task(task_number): #삭제할 할일
-    pass
+def delete_task(task_number): #삭제할 할일 
+    tasks = load_task() # 목록 불러오기
+    if 1 <=task_number <= len(tasks) : # 목록중 고르기
+        remove_task = tasks.pop(task_number-1) # pop통해 삭제 및 반환, 삭제된 데이터가 remove_task에 들어감
+        save_task(tasks) #리스트에 저장
+        print (f"할 일 중 '{remove_task['name']}'이(가) 삭제되었습니다.")
+    else :
+        print ("유효하지 않은 번호입니다. 다시 입력해주새요.")
 
 def show_menu() : # 메뉴
     print("---- 작업관리 애플리케이션 ----")
@@ -72,7 +78,7 @@ def main():
             complete_task(task_number)
         elif choice =='4':
             task_number =int(input("삭제할 할 일을 선택해주세요 : "))
-            del_task(task_number)
+            delete_task(task_number)
         elif choice =='5':
             print ("시스템을 종료합니다. ")
             break
