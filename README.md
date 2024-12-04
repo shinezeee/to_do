@@ -79,7 +79,7 @@ python task_manager.py
 
 ```plaintext
 task_manager/
-├── task_manager.py  # 메인 스크립트
+├── to_do.py  # 메인 스크립트
 ├── tasks.json       # 데이터 저장 파일
 └── README.md        # 프로젝트 문서
 ```
@@ -105,7 +105,7 @@ task_manager/
 
 ## 👨‍👩‍👧‍👦 개발자  
 
-- [시네지](https://github.com/shinezeee)  
+- [shinezeee](https://github.com/shinezeee)  
 
 ---
 
